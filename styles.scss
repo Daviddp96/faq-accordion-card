@@ -23,8 +23,10 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     padding: 10px;
+    margin: 0;
 }
 
 main {
@@ -44,11 +46,15 @@ main {
     transform: translate(-50%, -58%);
 }
 
+.image-desktop {
+    display: none;
+}
+
 .accordion-card {
     background-color: white;
     color: $darker-gray-blue;
     border-radius: 1.5rem;
-    box-shadow: 0px 20px 40px 0px rgba(0, 0, 0, 0.45);
+    box-shadow: 0px 20px 30px 0px rgba(0, 0, 0, 0.35);
     padding: 3rem 2rem;
     padding-top: 5rem;
     margin-top: 8.5rem;
@@ -95,10 +101,15 @@ main {
             background-repeat: no-repeat;
             width: 0.6rem;
             height: 0.6rem;
+            transition: all 0.2s ease;
         }
     }
     
     .answer {
+        display: none;
+        opacity: 0;
+        transition: all 0.2s ease;
+
         .answer__text {
             color: $dark-gray-blue;
             margin-top: 0;
@@ -114,9 +125,18 @@ main {
     }
 }
 
-.question__text--selected {
+.question--selected {
     color: $dark-desat-blue;
     font-weight: 700;
+}
+
+.question__arrow--rotate-up {
+    transform: rotate(180deg);
+}
+
+.answer--expanded {
+    display: block !important;
+    opacity: 1 !important;
 }
 
 footer {
@@ -149,35 +169,43 @@ footer {
 @media (min-width: 64em) {
 
     body {
-        font-size: 14.5px;
+        font-size: 14px;
     }
 
     main {
-        width: 58vw;
+        width: 90%;
+        max-width: 900px;
     }
 
     .image-container {
-        width: 191px;
-        height: 184px;
+        display: none;
+    }
+
+    .image-desktop {
+        display: block;
         background-image: url('./images/illustration-box-desktop.svg');
-        background-position: center;
-        top: 50%;
-        left: 0;
-        transform: translate(0%, -50%);
+        width: 201px;
+        height: 170px;
+        position: absolute;
+        left: -89px;
+        bottom: 112px;
+        background-size: 90%;
     }
 
     .accordion-card {
         display: flex;
         justify-content: flex-end;
         align-items: center;
-
+        margin-top: 0;
         background-image: url('./images/illustration-woman-online-desktop.svg'), url('./images/bg-pattern-desktop.svg');
         background-repeat: no-repeat;
-        background-position: center, left 800% bottom 16%;
-
+        background-size: 52%, 110%;
+        background-position: -20% 55%, left -600px bottom -165px;
+        padding: 4rem 3rem;
+        position: relative;
         .container {
-            width: 45%;
-            margin-right: 3em;
+            width: 40%;
+            margin-right: 4.5em;
         }
 
         h2 {
@@ -186,3 +214,5 @@ footer {
         }
     }
 }
+
+
